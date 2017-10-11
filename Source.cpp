@@ -4,7 +4,7 @@
 
 #include <windows.h>
 
-BOOL CreateGUID(HWND hWnd, LPTSTR lpszGUID)
+BOOL GenerateGUID(HWND hWnd, LPTSTR lpszGUID)
 {
 	GUID guid = GUID_NULL;
 	HRESULT hr = UuidCreate(&guid);
@@ -98,7 +98,7 @@ LRESULT CALLBACK WndProc(
 			LPTSTR lpszGUID = (LPTSTR)GlobalAlloc(
 				GMEM_FIXED,
 				sizeof(TCHAR)*(37));
-			if (CreateGUID(hWnd, lpszGUID))
+			if (GenerateGUID(hWnd, lpszGUID))
 			{
 				SetWindowText(hEdit, lpszGUID);
 			}
